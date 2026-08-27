@@ -53,6 +53,48 @@
             Follow the page for new locations, new updates, and more adventures to come.
         </p>
     </section>
+    
+<br>
+
+    <section>
+        <h2 style="text-align: center;">Send Me a Message</h2>
+    
+        <form>
+            <fieldset>
+                <legend>Your details</legend>
+    
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+    
+                <br><br>
+    
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+    
+                <br><br>
+    
+                <label for="subject">Subject:</label>
+                <select id="subject" name="subject" required>
+                    <option value="">Choose a subject</option>
+                    <option value="suggest-place">Suggest a place</option>
+                    <option value="correct-detail">Correct a detail</option>
+                    <option value="question">Ask a question</option>
+                    <option value="other">Something else</option>
+                </select>
+    
+                <br><br>
+    
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" rows="5" required
+                    style="width: 100%; box-sizing: border-box;"></textarea>
+    
+            </fieldset>
+    
+            <div style="text-align: center; margin-top: 15px;">
+                <button type="submit">Send message</button>
+            </div>
+        </form>
+    </section>
 
 </main>
 
