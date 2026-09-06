@@ -1,0 +1,300 @@
+/* =========================
+   1. Variables
+   ========================= */
+
+:root {
+    --brand-color: #6ba0af;
+    --dark-ink: #2b2b2b;
+    --heading-ink: #2b2b2b;
+    --muted-grey: #bcd9ff;
+    --light-background: #FFF0F3;
+    --card-background: #ffffff;
+    --header-text: #ffffff;
+    --border-color: #d1b8be;
+}
+
+
+/* =========================
+   2. Base Styles
+   ========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--dark-ink);
+    background-color: var(--light-background);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+h1,
+h2,
+h3 {
+    color: var(--heading-ink);
+    text-align: center;
+}
+
+p {
+    color: var(--dark-ink);
+    text-align: center;
+}
+
+
+/* =========================
+   3. Layout Regions
+   ========================= */
+
+header {
+    background-color: var(--brand-color);
+    padding: 20px;
+}
+
+header h1 {
+    text-align: center;
+    margin: 10px 0 15px;
+    color: var(--header-text);
+}
+
+header p {
+    text-align: center;
+    color: var(--header-text);
+}
+
+nav {
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+nav li {
+    display: inline-block;
+    margin: 0;
+}
+
+nav a {
+    color: var(--header-text);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: var(--muted-grey);
+}
+
+main {
+    padding: 30px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+main section {
+    margin-bottom: 35px;
+}
+
+main section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+main section p {
+    text-align: center;
+    color: var(--dark-ink);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer {
+    background-color: var(--brand-color);
+    color: var(--header-text);
+    padding: 20px;
+    text-align: center;
+}
+
+footer p {
+    color: var(--header-text);
+    margin: 0;
+    text-align: center;
+}
+
+
+/* =========================
+   4. Components
+   ========================= */
+
+/* Place & Product Cards */
+
+.place-card {
+    font-family: Roboto, Arial, sans-serif;
+    background-color: var(--card-background);
+    border: 1px solid var(--muted-grey);
+    border-radius: 10px;
+    padding: 16px;
+    margin: 0 auto 20px;
+    max-width: 500px;
+    text-align: center;
+    border-left: 10px solid var(--brand-color);
+}
+
+.place-card h3 {
+    margin-top: 0;
+    font-size: 24px;
+    color: var(--brand-color);
+}
+
+.place-card img {
+    display: block;
+    margin: 0 auto;
+}
+
+.place-card a {
+    color: var(--brand-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.place-card a:hover {
+    color: var(--muted-grey);
+}
+
+/* Detail Images */
+
+main section img {
+    display: block;
+    margin: 0 auto 20px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Tables */
+
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: var(--card-background);
+    width: 100%;
+    max-width: 800px;
+    border: 1px solid var(--border-color);
+}
+
+th,
+td {
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+}
+
+th {
+    background-color: var(--brand-color);
+    color: var(--header-text);
+    font-weight: bold;
+}
+
+td {
+    color: var(--dark-ink);
+}
+
+/* Lists */
+
+main ul {
+    padding: 0;
+    margin: 0 auto;
+    text-align: center;
+    list-style: none;
+    list-style-type: none;
+}
+
+main li {
+    margin: 8px 0;
+    color: var(--dark-ink);
+}
+
+/* Forms */
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+fieldset {
+    padding: 20px;
+    margin: 15px auto;
+    background-color: var(--card-background);
+    border: 2px solid var(--brand-color);
+    border-radius: 10px;
+    text-align: center;
+}
+
+legend {
+    font-weight: bold;
+    color: var(--brand-color);
+    padding: 0 8px;
+}
+
+label {
+    color: var(--dark-ink);
+}
+
+input,
+select,
+textarea {
+    font-family: Arial, sans-serif;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    max-width: 320px;
+}
+
+textarea {
+    width: 100%;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 3px solid var(--brand-color);
+    outline-offset: 2px;
+}
+
+button,
+button[type="submit"] {
+    background-color: var(--brand-color);
+    color: var(--header-text);
+    border: none;
+    border-radius: 4px;
+    padding: 10px 24px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.2s ease-in-out;
+}
+
+button:hover,
+button[type="submit"]:hover {
+    opacity: 0.9;
+}
