@@ -150,7 +150,7 @@ footer p {
 
 .place-card {
     flex: 1 1 240px;
-    font-family: Roboto, sans-serif;
+    font-family: Roboto, cursive;
     background-color: var(--card-background);
     border: 1px solid var(--muted-grey);
     border-radius: 10px;
@@ -266,7 +266,7 @@ input,
 select,
 textarea {
     max-width: 100%;
-    font-family: Arial, sans-serif;
+    font-family: roboto, cursive;
     padding: 8px;
     border: 1px solid var(--muted-grey);
 }
