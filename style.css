@@ -58,6 +58,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-image: url("lagay ka picture dito");
 }
 
 section p {
@@ -143,22 +144,28 @@ footer p {
 /* Place Cards */
 
 .place-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
 }
-
 .place-card {
-    flex: 1 1 240px;
+    flex: 1 1 calc(50% - 12px);
+    display: flex;
+    flex-direction: column;
     font-family: Roboto, cursive;
     background-color: var(--card-background);
     border: 1px solid var(--muted-grey);
     border-radius: 10px;
     padding: 16px;
-    width: 100%;
-    max-width: 500px;
+    max-width: calc(50% - 12px);
     text-align: center;
     border-left: 10px solid var(--brand-color);
+}
+
+.place-card p:last-child {
+    margin-top: auto;
+    padding-top: 10px;
 }
 
 .place-card h3 {
@@ -170,7 +177,9 @@ footer p {
 .place-card img {
     display: block;
     width: 100%;
-    height: auto;
+    max-width: 300px;
+    height: 200px;
+    object-fit: cover;
     margin: 0 auto;
     border-radius: 6px;
 }
@@ -323,6 +332,8 @@ button:hover {
     }
 
     .place-card {
+        flex: 1 1 100%;
+        max-width: 100%;
         padding: 14px;
         border-left: 6px solid var(--brand-color);
     }
