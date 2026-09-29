@@ -47,7 +47,40 @@ p {
 
 
 /* =========================
-   3. Layout Regions
+   3. Page Grid Skeleton
+   ========================= */
+
+.page {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    grid-template-areas:
+        "masthead masthead"
+        "side     main"
+        "foot     foot";
+    gap: 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    grid-area: masthead;
+}
+
+aside {
+    grid-area: side;
+}
+
+main {
+    grid-area: main;
+}
+
+footer {
+    grid-area: foot;
+}
+
+
+/* =========================
+   4. Layout Regions
    ========================= */
 
 header {
@@ -137,7 +170,7 @@ footer p {
 
 
 /* =========================
-   4. Components
+   5. Components
    ========================= */
 
 /* Place Cards */
@@ -200,6 +233,56 @@ main section img {
     max-width: 100%;
     height: auto;
     margin: 0 auto;
+}
+
+
+/* Sidebar */
+
+aside {
+    align-self: start;
+    background-color: var(--card-background);
+    border: 1px solid var(--muted-grey);
+    border-left: 8px solid var(--brand-color);
+    border-radius: 10px;
+    padding: 18px;
+}
+
+aside h2 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    text-align: left;
+    color: var(--brand-color);
+}
+
+aside h2:not(:first-child) {
+    margin-top: 22px;
+}
+
+aside p,
+aside li {
+    font-size: 14px;
+    text-align: left;
+    color: var(--dark-ink);
+}
+
+aside ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+aside li {
+    margin: 0 0 8px;
+}
+
+aside a {
+    color: var(--brand-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+aside a:hover {
+    color: var(--muted-grey);
 }
 
 
@@ -304,8 +387,20 @@ button:hover {
 
 
 /* =========================
-   5. Responsive Styles
+   6. Responsive Styles
    ========================= */
+
+@media (max-width: 900px) {
+
+    .page {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "masthead"
+            "side"
+            "main"
+            "foot";
+    }
+}
 
 @media (max-width: 600px) {
 
