@@ -50,14 +50,20 @@ p {
    3. Page Grid Skeleton
    ========================= */
 
+/* Mobile first: one column, and the sidebar is written AFTER main so
+   visitors reach the recommendations before the secondary content.
+   The named areas reorder the page at wider widths later on without
+   touching a single line of HTML. */
 .page {
     display: grid;
-    grid-template-columns: 220px 1fr;
+    grid-template-columns: 1fr;
     grid-template-areas:
-        "masthead masthead"
-        "side     main"
-        "foot     foot";
+        "masthead"
+        "main"
+        "side"
+        "foot";
     gap: 16px;
+    padding: 12px;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -85,12 +91,15 @@ footer {
 
 header {
     background-color: var(--brand-color);
-    padding: 20px;
+    padding: 20px 15px;
     text-align: center;
 
+    /* Mobile: the masthead stacks, so the title never fights the nav
+       for space on a narrow screen */
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+    gap: 12px;
 }
 
 section p {
@@ -101,11 +110,14 @@ section p {
 header h1 {
     text-align: center;
     margin: 10px 0 15px;
+    font-size: 26px;
     color: var(--light-background);
 }
 
 header p {
     text-align: center;
+    margin: 0;
+    font-size: 15px;
     color: var(--light-background);
 }
 
@@ -121,10 +133,13 @@ nav ul {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 6px 14px;
 }
 
 nav a {
+    /* Roomier tap targets on a phone */
+    display: inline-block;
+    padding: 6px 4px;
     color: var(--light-background);
     text-decoration: none;
 }
@@ -136,7 +151,7 @@ nav a:hover {
 main {
     width: 100%;
     max-width: 1000px;
-    padding: 30px 20px;
+    padding: 20px 16px;
     margin: 0 auto;
 }
 
@@ -178,11 +193,13 @@ footer p {
 .place-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 24px;
+    gap: 20px;
     justify-content: center;
 }
 .place-card {
-    flex: 1 1 calc(50% - 12px);
+    /* Mobile: one card per row, the full width of the column */
+    flex: 1 1 100%;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     font-family: Roboto, cursive;
@@ -190,7 +207,6 @@ footer p {
     border: 1px solid var(--muted-grey);
     border-radius: 10px;
     padding: 16px;
-    max-width: calc(50% - 12px);
     text-align: center;
     border-left: 10px solid var(--brand-color);
 }
@@ -202,7 +218,7 @@ footer p {
 
 .place-card h3 {
     margin-top: 0;
-    font-size: 24px;
+    font-size: 20px;
     color: var(--brand-color);
 }
 
@@ -294,13 +310,17 @@ table {
     margin: 0 auto;
     border-collapse: collapse;
     background-color: var(--light-background);
+    font-size: 14px;
 }
 
 th,
 td {
-    padding: 10px 15px;
+    /* Tight padding plus breakable words keep four columns inside a
+       phone screen instead of pushing the whole page sideways */
+    padding: 8px 6px;
     border: 1px solid var(--muted-grey);
     text-align: center;
+    overflow-wrap: anywhere;
 }
 
 th {
@@ -337,11 +357,14 @@ form {
 }
 
 fieldset {
-    padding: 20px;
+    padding: 15px;
     margin: 15px auto;
     background-color: var(--card-background);
     border: 2px solid var(--brand-color);
     border-radius: 10px;
+    /* Fieldsets default to min-content, which can force a narrow
+       layout wider than the phone screen */
+    min-width: 0;
 }
 
 legend {
@@ -360,6 +383,15 @@ textarea {
     font-family: roboto, cursive;
     padding: 8px;
     border: 1px solid var(--muted-grey);
+}
+
+/* Full width fields are far easier to tap on a phone.
+   Radio buttons and checkboxes are deliberately left alone. */
+input[type="text"],
+input[type="email"],
+select {
+    width: 100%;
+    max-width: 320px;
 }
 
 textarea {
@@ -387,65 +419,98 @@ button:hover {
 
 
 /* =========================
-   6. Responsive Styles
+   6. Responsive Enhancements
    ========================= */
 
-@media (max-width: 900px) {
+/* Everything above this line is the phone layout. These queries only
+   ADD to it, working upward with min-width, so a wider screen always
+   builds on the small one. There are no max-width queries anywhere. */
+
+/* Large phones and small tablets */
+@media (min-width: 600px) {
 
     .page {
-        grid-template-columns: 1fr;
-        grid-template-areas:
-            "masthead"
-            "side"
-            "main"
-            "foot";
+        gap: 20px;
+        padding: 16px;
     }
-}
-
-@media (max-width: 600px) {
 
     header {
-        padding: 20px 15px;
+        padding: 20px;
     }
 
     header h1 {
-        font-size: 26px;
+        font-size: 32px;
     }
 
     header p {
-        font-size: 14px;
+        font-size: 16px;
     }
 
     nav ul {
-        flex-direction: column;
-        gap: 10px;
+        gap: 6px 20px;
     }
 
-    main {
-        padding: 20px 15px;
-    }
-
+    /* Two cards per row once there is room for them */
     .place-card {
-        flex: 1 1 100%;
-        max-width: 100%;
-        padding: 14px;
-        border-left: 6px solid var(--brand-color);
+        flex: 1 1 calc(50% - 12px);
+        max-width: calc(50% - 12px);
     }
 
     .place-card h3 {
-        font-size: 20px;
+        font-size: 24px;
     }
 
     table {
-        font-size: 14px;
+        font-size: 16px;
     }
 
     th,
     td {
-        padding: 8px;
+        padding: 10px 15px;
     }
 
     fieldset {
-        padding: 15px;
+        padding: 20px;
+    }
+}
+
+/* Tablet and up: the sidebar moves up beside main, and the masthead
+   returns to the single row it has always been on desktop */
+@media (min-width: 700px) {
+
+    .page {
+        grid-template-columns: 220px 1fr;
+        grid-template-areas:
+            "masthead masthead"
+            "side     main"
+            "foot     foot";
+        gap: 16px;
+        padding: 0;
+    }
+
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    main {
+        padding: 30px 20px;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1000px) {
+
+    .page {
+        grid-template-columns: 240px 1fr;
+        gap: 24px;
+    }
+
+    main {
+        padding: 30px 24px;
+    }
+
+    .place-card img {
+        height: 220px;
     }
 }
